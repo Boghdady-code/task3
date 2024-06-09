@@ -1,0 +1,210 @@
+<div class="container-fluid row">
+  <div class="form col-md-6 mt-5">
+    <form [formGroup]="cardForm!" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter name"
+          formControlName="name"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !cardForm?.get('name')?.valid && cardForm?.get('name')?.touched
+          "
+        >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('name')?.errors?.['required']"
+            >Name is Required</span
+          >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('name')?.errors?.['minlength']"
+            >Minimum 3 characters</span
+          >
+        </span>
+      </div>
+      <div class="form-group mb-3">
+        <label for="job">Job</label>
+        <input
+          type="text"
+          class="form-control"
+          id="job"
+          placeholder="Enter Your Job title"
+          formControlName="job"
+        />
+        <span
+          class="help-block"
+          *ngIf="!cardForm?.get('job')?.valid && cardForm?.get('job')?.touched"
+        >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('job')?.errors?.['required']"
+            >Job is Required</span
+          >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('job')?.errors?.['minlength']"
+            >Minimum 3 characters</span
+          >
+        </span>
+      </div>
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter Your Email"
+          formControlName="email"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !cardForm?.get('email')?.valid && cardForm?.get('email')?.touched
+          "
+        >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('email')?.errors?.['required']"
+            >Email Address is Required</span
+          >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('email')?.errors?.['email']"
+            >Invaild Email Address</span
+          >
+        </span>
+      </div>
+      <div formArrayName="phones">
+        <div *ngFor="let phone of phoneControls; let i = index">
+          <label>
+            Phone Number {{ i + 1 }}:
+            <input
+              type="text"
+              [formControlName]="i"
+              class="mb-3 form-control phone"
+              placeholder="Enter Your Phone"
+            />
+            <button
+              type="button"
+              *ngIf="i > 0"
+              (click)="removePhoneNumber(i)"
+              class="btn btn-danger mb-1"
+            >
+              Remove
+            </button>
+          </label>
+          <span class="help-block" *ngIf="!phone?.valid && phone?.touched">
+            <span *ngIf="phone?.errors?.['required']">Number is Required</span>
+            <span *ngIf="phone?.errors?.['pattern']">Invalid Number</span>
+          </span>
+        </div>
+        <button
+          type="button"
+          (click)="addPhoneNumber()"
+          class="btn btn-primary mb-3"
+          style="float: right"
+          [disabled]="phoneControls.length == 2"
+        >
+          Add Phone Number
+        </button>
+      </div>
+      <div class="form-group mb-3">
+        <label for="address">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="Enter Your Address"
+          formControlName="address"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !cardForm?.get('address')?.valid &&
+            cardForm?.get('address')?.touched
+          "
+        >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('address')?.errors?.['required']"
+            >Address is Required</span
+          >
+        </span>
+      </div>
+      <div class="form-group mb-3">
+        <label for="website">Website</label>
+        <input
+          type="text"
+          class="form-control"
+          id="website"
+          placeholder="Enter Your Website"
+          formControlName="website"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !cardForm?.get('website')?.valid &&
+            cardForm?.get('website')?.touched
+          "
+        >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('website')?.errors?.['required']"
+            >Website is Required</span
+          >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('website')?.errors?.['pattern']"
+            >Invaild Website</span
+          >
+        </span>
+      </div>
+      <div class="form-group mb-3">
+        <label for="qrCode">QR Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="qrCode"
+          placeholder="Enter Your Qr Code"
+          formControlName="qrCode"
+        />
+        <span
+          class="help-block"
+          *ngIf="
+            !cardForm?.get('qrCode')?.valid && cardForm?.get('qrCode')?.touched
+          "
+        >
+          <span
+            class="help-block"
+            *ngIf="cardForm?.get('qrCode')?.errors?.['required']"
+            >Qr Code is Required</span
+          >
+        </span>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+        [disabled]="!cardForm?.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <app-card
+      [name]="name"
+      [email]="email"
+      [job]="job"
+      [address]="address"
+      [phones]="phones"
+      [website]="website"
+      [qrCode]="qrCode"
+    ></app-card>
+  </div>
+</div>
