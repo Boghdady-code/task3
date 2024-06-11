@@ -64,5 +64,29 @@ export class FormsComponent implements OnInit {
       this.qrCode = value.qrCode;
     })
   }
+
+
+
+html: string = `
+<div class="conainer-fluid mt-5" >
+<div class="card">
+    <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text"></p>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item name"></li>
+        <li class="list-group-item job"></li>
+        <li class="list-group-item email"></li>
+        <li class="list-group-item phones">
+        </li>
+        <li class="list-group-item address"></li>
+        <li class="list-group-item website"></li>
+		<li class="list-group-item qrCode"></li>
+    </ul>
+    </div>
+</div>
+</div>
+`
+
 }
 

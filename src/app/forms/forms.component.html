@@ -44,7 +44,7 @@
           <span
             class="help-block"
             *ngIf="cardForm?.get('job')?.errors?.['required']"
-            >Job is Required</span
+            >Job is required</span
           >
           <span
             class="help-block"
@@ -161,7 +161,7 @@
           <span
             class="help-block"
             *ngIf="cardForm?.get('website')?.errors?.['pattern']"
-            >Invaild Website</span
+            >Invalid Website</span
           >
         </span>
       </div>
@@ -205,6 +205,7 @@
       [phones]="phones"
       [website]="website"
       [qrCode]="qrCode"
+      [html]="html"
     ></app-card>
   </div>
 </div>

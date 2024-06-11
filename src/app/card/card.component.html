@@ -1,19 +1,2 @@
-<div class="conainer-fluid mt-5" >
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text"></p>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ name! }}</li>
-        <li class="list-group-item">{{ job! }}</li>
-        <li class="list-group-item">{{ email! }}</li>
-        <li class="list-group-item" *ngFor="let phone of phones">
-          {{ phone }}
-        </li>
-        <li class="list-group-item">{{ address! }}</li>
-        <li class="list-group-item">{{ website! }}</li>
-        <li class="list-group-item"><qrcode [qrdata]="code!" [width]="100" [errorCorrectionLevel]="'M'" *ngIf="code !== ''"></qrcode></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div [innerHTML]="html" class="container-fluid"></div>
+
