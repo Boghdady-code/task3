@@ -1,5 +1,6 @@
 import { Component,OnInit} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -17,10 +18,10 @@ export class FormsComponent implements OnInit {
   address: string | undefined;
   website: string | undefined;
   qrCode: string | undefined;
-  
+  constructor() {}
 
   onSubmit() {
-    console.log(this.cardForm?.value);
+    
   }
 
   get phoneControls () {
@@ -68,24 +69,43 @@ export class FormsComponent implements OnInit {
 
 
 html: string = `
-<div class="conainer-fluid mt-5" >
+<div class="mt-5" >
 <div class="card">
     <div class="card-body">
     <h5 class="card-title"></h5>
     <p class="card-text"></p>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item name"></li>
-        <li class="list-group-item job"></li>
-        <li class="list-group-item email"></li>
-        <li class="list-group-item phones">
-        </li>
-        <li class="list-group-item address"></li>
-        <li class="list-group-item website"></li>
-		<li class="list-group-item qrCode"></li>
-    </ul>
-    </div>
+    <p class="title text-center">Personal Card</p>
+    <div class="name text-center"></div>
+    <div class="job"></div>
+    <div class="email"></div>
+    <div class="phones"></div>
+    <div class="address"></div>
+    <div class="website"></div>
+    <div class="qrCode"></div>
+  </div>
 </div>
 </div>
+`
+css:string = `
+  .card{
+    width: 500px;
+    height: 300px !important;
+    background-color: #f5f5f5;
+
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+
+  }
+
 `
 
 }

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component,  Input, OnChanges, OnInit, Renderer2} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class CardComponent implements OnChanges,OnInit,AfterViewInit {
   }
 
   ngOnInit(): void {
+    
+    
   }
 
   ngAfterViewInit(): void {
@@ -30,6 +33,11 @@ export class CardComponent implements OnChanges,OnInit,AfterViewInit {
     this.websiteElement = document.querySelector('.website');
     this.qrCodeElement = document.querySelector('.qrCode');
     this.phonesElement = document.querySelector('.phones');
+    const styleElement = this.renderer.createElement('style');
+    const textNode = this.renderer.createText(this.css!);
+    this.renderer.appendChild(styleElement, textNode);
+    const container = document.querySelector('.container-fluid');
+    this.renderer.appendChild(container, styleElement);
   }
   
 @Input() name: string | undefined;
@@ -40,6 +48,7 @@ export class CardComponent implements OnChanges,OnInit,AfterViewInit {
 @Input() website: string | undefined;
 @Input() qrCode: string | undefined;
 @Input() html: string | undefined;
+@Input() css: string | undefined;
 
 ngOnChanges() {
   const setElementInnerHTML = (element: any, content: any) => {
