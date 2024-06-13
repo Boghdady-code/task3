@@ -1,4 +1,5 @@
-<div [innerHTML]="html" class="container-fluid">
-    
+<div class="container-fluid card">
+    <div [innerHTML]="html" style="margin-bottom: 10px;">
+    </div >
+    <qrcode [qrdata]="qrCode!" [width]="80" [errorCorrectionLevel]="'H'" [colorDark]="'#000000'" *ngIf="qrCode"></qrcode>
 </div>
-

@@ -70,29 +70,29 @@ export class FormsComponent implements OnInit {
 
 html: string = `
 <div class="mt-5" >
-<div class="card">
-    <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"></p>
-    <p class="title text-center">Personal Card</p>
+<div class="card-main">
+    <div class="card-bd">
+    <h5 class="card-tt"></h5>
+    <p class="card-txt"></p>
+    <p class=" title text-center">Personal Card</p>
     <div class="name text-center"></div>
     <div class="job"></div>
     <div class="email"></div>
     <div class="phones"></div>
     <div class="address"></div>
     <div class="website"></div>
-    <div class="qrCode"></div>
   </div>
 </div>
 </div>
 `
 css:string = `
   .card{
-    width: 500px;
-    height: 300px !important;
+    width: 700px;
+    height: 400px !important;
     background-color: #f5f5f5;
 
   }
+
 
   .title {
     font-size: 20px;
